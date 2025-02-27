@@ -1,0 +1,5 @@
+        "meters": {"kilometers": 0.001, "centimeters": 100, "feet": 3.28084},
+        "kilometers": {"meters": 1000, "miles": 0.621371},
+        "miles": {"kilometers": 1.60934, "meters": 1609.34},
+        "feet": {"meters": 0.3048, "centimeters": 30.48},
+        "centimeters": {"meters": 0.01, "feet": 0.0328084},
