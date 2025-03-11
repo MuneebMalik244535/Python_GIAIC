@@ -1,9 +1,2 @@
 streamlit
-qrcode
-Image
-BytesIO
-
-
-
-
-
+qrcode[pil]
