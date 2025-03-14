@@ -1,10 +1,19 @@
 import streamlit as st
+import os
+import joblib
 from weather import get_current_weather
 from fore import get_forecast, get_past_weather
 from predictor import predict_next_week_temp
+from model_trainer import train_model  # ✅ Model training function import kiya
 
 # 🌤 Set Page Configuration
 st.set_page_config(page_title="AI Weather App", page_icon="🌍", layout="wide")
+
+# ✅ Ensure Model Exists Before Running Predictions
+if not os.path.exists("weather_model.pkl"):
+    st.warning("⚠️ Model file missing! Training a new one...")
+    train_model("Lahore")  # Default city, change if needed
+    st.success("✅ Model trained successfully!")
 
 # 🎨 Title & Description
 st.markdown("""
@@ -26,6 +35,8 @@ if st.button("🔍 Get Weather & Forecast"):
             st.write(f"☁ Condition: **{weather['condition']} {weather['icon']}**")
             st.write(f"💨 Wind Speed: **{weather['wind']} m/s**")
             st.write(f"💧 Humidity: **{weather['humidity']}%**")
+        else:
+            st.warning("⚠️ Unable to fetch current weather data. Try again.")
 
         # 📅 Fetch 7-Day Forecast
         forecast_data = get_forecast(city_name)
@@ -43,12 +54,16 @@ if st.button("🔍 Get Weather & Forecast"):
                         <p style="font-size: 18px;">{day['rain']}</p>
                     </div>
                 """, unsafe_allow_html=True)
+        else:
+            st.warning("⚠️ Unable to fetch 7-day forecast. Try again.")
 
         # 📊 Fetch Past 30 Days Weather
         past_data = get_past_weather(city_name)
         if not past_data.empty:
             st.subheader("📊 Past 30 Days Weather Data")
             st.dataframe(past_data)
+        else:
+            st.warning("⚠️ No past weather data available.")
 
     else:
         st.warning("⚠️ Please enter a valid city name.")
