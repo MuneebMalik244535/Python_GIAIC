@@ -1,26 +1,26 @@
-import streamlit as st
-import random
+import streamlit as st, random
 
-words = ["python", "streamlit", "hangman"]
-word = random.choice(words)
-guessed = ["_"] * len(word)
+word = random.choice(["cat", "dog", "bat"])
+display = ["_"] * len(word)
 attempts = 6
 
-st.title("📝 Hangman Game")
-st.write(" ".join(guessed))
-letter = st.text_input("Guess a letter: ").lower()
+st.title("Hangman")
+st.write(" ".join(display) + f" | Attempts left: {attempts}")
+guess = st.text_input("Guess a letter: ").lower()
 
-if letter:
-    if letter in word:
-        for i in range(len(word)):
-            if word[i] == letter:
-                guessed[i] = letter
+if guess:
+    if guess in word:
+        for index, letter in enumerate(word):
+            if letter == guess:
+                display[index] = guess
+        st.write("✅ Correct!")
     else:
         attempts -= 1
+        st.write("❌ Wrong!")
 
-    if "_" not in guessed:
-        st.success(f"🎉 You won! The word was {word}")
+    st.write(" ".join(display) + f" | Attempts left: {attempts}")
+
+    if "_" not in display:
+        st.success("🎉 You Win!")
     elif attempts == 0:
-        st.error(f"❌ You lost! The word was {word}")
-
-st.write(f"Attempts left: {attempts}")
+        st.error(f"❌ You Lose! Word: {word}")
