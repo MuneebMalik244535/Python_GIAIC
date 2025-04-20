@@ -17,6 +17,7 @@ def generate_questions(code):
     4. Each mcqs and question should be number wise like(1,2,3,4.....)
     5. Each Mcqs Section must have some space from next question 
     6. mcqs choose option should be number wise like(i,ii,iii,iv.....)
+    7. Every time the mcqs and short question should be new not same 
 
     Code:
     {code}
