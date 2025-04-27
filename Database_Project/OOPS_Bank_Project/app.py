@@ -1,12 +1,12 @@
-
+import json
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
-import random
 
-# 🚀 Initialize Firebase for Python
+# 🚀 Initialize Firebase
 if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase_key.json")  # Tumhari JSON file ka naam
+    firebase_config = json.loads(st.secrets["firebase"])
+    cred = credentials.Certificate(firebase_config)
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
