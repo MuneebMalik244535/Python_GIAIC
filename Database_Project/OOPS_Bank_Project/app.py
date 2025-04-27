@@ -6,7 +6,7 @@ import random
 
 # 🚀 Initialize Firebase for Python
 if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase_key.json.json")  # Tumhari JSON file ka naam
+    cred = credentials.Certificate("firebase_key.json")  # Tumhari JSON file ka naam
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
