@@ -10,6 +10,7 @@ if not firebase_admin._apps:
 db = firestore.client()
 
 
+
 # 🔁 Load all accounts from Firebase
 def load_accounts():
     accounts = {}
