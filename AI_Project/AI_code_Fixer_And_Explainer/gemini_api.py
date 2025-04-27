@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-genai.configure(api_key="AIzaSyBDPoqkFJIDIv0QcCi5MHA8WRv3nCI5imc")
+genai.configure(api_key="AIzaSyBJnLpWyU94PCrjB4ohXGicDt8yfERDLTc")
 
 def get_fixed_code(code, explain=False):
     with open("prompt_template.txt", "r") as f:
