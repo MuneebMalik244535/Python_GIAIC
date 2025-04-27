@@ -11,7 +11,7 @@ mode = st.sidebar.radio("Choose Mode:", ["Fix Only", "Fix + Explain"])
 explain = mode == "Fix + Explain"
 
 # Upload individual files
-uploaded_files = st.file_uploader("📄 Upload multiple code files", type=["py", "js", "ts", "jsx", "tsx"], accept_multiple_files=True)
+uploaded_files = st.file_uploader("📄 Upload multiple code files", type=["py", "js", "ts", "jsx", "txt" , "tsx"], accept_multiple_files=True)
 
 if uploaded_files:
     fixed_files = {}
