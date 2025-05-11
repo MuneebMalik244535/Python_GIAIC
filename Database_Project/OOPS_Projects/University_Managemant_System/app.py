@@ -1,12 +1,14 @@
 
 import streamlit as st
 import firebase_admin
-from firebase_admin import credentials, firestore
-
+from firebase_admin import credentials
 import json
-
+# Firebase credentials load from Streamlit secrets
 cred = credentials.Certificate(dict(st.secrets["FIREBASE"]))
+
+# Initialize Firebase
 firebase_admin.initialize_app(cred)
+
 
 
 # # Initialize Firebase only once
