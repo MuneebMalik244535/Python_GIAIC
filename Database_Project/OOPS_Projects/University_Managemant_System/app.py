@@ -8,6 +8,7 @@ import json
 cred = credentials.Certificate(dict(st.secrets["FIREBASE"]))
 firebase_admin.initialize_app(cred)
 
+
 # # Initialize Firebase only once
 # if not firebase_admin._apps:
 #     cred = credentials.Certificate("firebase_key.json")
