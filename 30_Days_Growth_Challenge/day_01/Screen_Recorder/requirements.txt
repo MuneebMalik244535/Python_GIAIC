@@ -2,4 +2,3 @@ streamlit
 opencv-python
 pyautogui
 numpy
-cv2
